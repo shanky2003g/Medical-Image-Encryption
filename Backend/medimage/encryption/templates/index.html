@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Encryption</title>
+</head>
+<body>
+    <h1>Upload Medical Image for Encryption</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" id="imageInput" accept="image/*">
+        <button type="submit">Encrypt Image</button>
+    </form>
+    <div id="result">
+        <h2>Latent Vector:</h2>
+        <pre id="latentVector"></pre>
+        <button id="encryptButton" style="display: none;">Encrypt Latent Vector</button>
+        <h2>Encrypted Latent Vector:</h2>
+        <pre id="encryptedLatentVector"></pre>
+        <button id="decryptButton" style="display: none;">Decrypt Latent Vector</button>
+        <h2>Decrypted Latent Vector:</h2>
+        <pre id="decryptedLatentVector"></pre>
+        <button id="reconstructButton" style="display: none;">Reconstruct Image</button>
+        <h2>Reconstructed Image:</h2>
+        <img id="reconstructedImage" style="display: none;" />
+    </div>
+
+    <script>
+        let originalLatentVector = null;  // Store the original latent vector for comparison
+
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(document.getElementById('uploadForm'));
+
+            const response = await fetch('/encrypt/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                },
+            });
+            const result = await response.json();
+
+            // Display the latent vector
+            document.getElementById('latentVector').textContent = JSON.stringify(result.latent_vector, null, 2);
+
+            // Store the original latent vector for comparison
+            originalLatentVector = result.latent_vector;
+
+            // Show the "Encrypt Latent Vector" button
+            document.getElementById('encryptButton').style.display = 'block';
+        });
+
+        document.getElementById('encryptButton').addEventListener('click', async () => {
+            const latentVectorStr = originalLatentVector.join(',');  // Convert to a comma-separated string
+
+            const encryptResponse = await fetch('/encrypt-latent-vector/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                },
+                body: new URLSearchParams({
+                    'latent_vector': latentVectorStr,  // Send the latent vector as a comma-separated string
+                }),
+            });
+            const encryptResult = await encryptResponse.json();
+
+            // Display the encrypted latent vector
+            document.getElementById('encryptedLatentVector').textContent = JSON.stringify(encryptResult, null, 2);
+
+            // Show the "Decrypt Latent Vector" button
+            document.getElementById('decryptButton').style.display = 'block';
+        });
+
+        document.getElementById('decryptButton').addEventListener('click', async () => {
+            const encryptResult = JSON.parse(document.getElementById('encryptedLatentVector').textContent);
+
+            // Extract the encrypted latent vector, key, and IV from the JSON response
+            const encryptedLatentVector = encryptResult.encrypted_latent_vector;
+            const key = encryptResult.key;
+            const iv = encryptResult.iv;
+
+            const decryptResponse = await fetch('/decrypt-latent-vector/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                },
+                body: new URLSearchParams({
+                    'encrypted_latent_vector': encryptedLatentVector,
+                    'key': key,
+                    'iv': iv,
+                }),
+            });
+            const decryptResult = await decryptResponse.json();
+
+            // Display the decrypted latent vector
+            document.getElementById('decryptedLatentVector').textContent = JSON.stringify(decryptResult.decrypted_latent_vector, null, 2);
+
+            // Show the "Reconstruct Image" button
+            document.getElementById('reconstructButton').style.display = 'block';
+        });
+
+        document.getElementById('reconstructButton').addEventListener('click', async () => {
+           
+            const reconstructResponse = await fetch('/reconstruct-image/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                },
+            });
+            const reconstructResult = await reconstructResponse.json();
+
+            if (reconstructResult.reconstructed_image) {
+                // Display the reconstructed image
+                const reconstructedImage = document.getElementById('reconstructedImage');
+                reconstructedImage.src = `data:image/png;base64,${reconstructResult.reconstructed_image}`;
+                reconstructedImage.style.display = 'block';
+            } else {
+                alert('Error: ' + reconstructResult.error);
+            }
+        });
+    </script>
+</body>
+</html>
