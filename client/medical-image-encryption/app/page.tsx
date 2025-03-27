@@ -24,6 +24,7 @@ import StepIndicator from "@/components/step-indicator"
 import MedicalHeader from "@/components/medical-header"
 import EncryptionVisual from "@/components/encryption-visual"
 import SecurityBadge from "@/components/security-badge"
+import ProjectInfo from "@/components/project-info"
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -195,6 +196,7 @@ export default function Home() {
       <main className="container mx-auto py-12 px-4 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-300 rounded-full filter blur-3xl opacity-20 -z-10"></div>
 
+        <ProjectInfo />
         <MedicalHeader />
 
         <Card className="max-w-4xl mx-auto border-0 shadow-xl bg-white/90 backdrop-blur-sm mt-8">
