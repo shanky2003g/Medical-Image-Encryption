@@ -17,7 +17,7 @@ export default function ProjectInfo() {
 
           <div className="flex items-center bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm">
             <BookOpen className="h-5 w-5 mr-2 text-cyan-100" />
-            <span className="font-medium">Information Assurance and Security (IT352) Course Project</span>
+            <span className="font-medium">Foundations of Machine Learning (IT464) Course Project</span>
           </div>
         </div>
 
@@ -35,6 +35,12 @@ export default function ProjectInfo() {
               </li>
               <li>
                 <span className="font-medium text-white">Kailash Venkat</span> (221IT056)
+              </li>
+              <li className="mb-1">
+                <span className="font-medium text-white">Balaji Anirudh</span> (221IT024)
+              </li>
+              <li className="mb-1">
+                <span className="font-medium text-white">Dilip Sagar M</span> (221IT026)
               </li>
             </ul>
           </div>

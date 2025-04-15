@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
   BookOpen,
@@ -19,24 +19,24 @@ import {
   BrainCircuit,
   Lock,
   ShieldCheck,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
-  const [activeSection, setActiveSection] = useState(0)
+  const [activeSection, setActiveSection] = useState(0);
 
   // Auto-rotate through sections
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveSection((prev) => (prev + 1) % 4)
-    }, 8000)
+      setActiveSection((prev) => (prev + 1) % 4);
+    }, 8000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSectionClick = (index: number) => {
-    setActiveSection(index)
-  }
+    setActiveSection(index);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-cyan-900 to-teal-900 text-white">
@@ -69,14 +69,20 @@ export default function AboutPage() {
 
           <div className="flex items-center">
             <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-sm font-medium text-cyan-200">Information Assurance and Security (IT352)</span>
+              <span className="text-sm font-medium text-cyan-200">
+                Foundations of Machine Learning (IT352)
+              </span>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg px-3 py-1 text-sm font-medium mb-4">
                 Course Project
               </div>
@@ -84,23 +90,32 @@ export default function AboutPage() {
                 Medical Image Encryption
               </h1>
               <p className="text-lg text-blue-100 mb-8 max-w-xl">
-                A secure system for encrypting and decrypting medical images using latent vector transformation,
-                ensuring HIPAA compliance and protecting sensitive patient data.
+                A secure system for encrypting and decrypting medical images
+                using latent vector transformation, ensuring HIPAA compliance
+                and protecting sensitive patient data.
               </p>
 
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
                 <div className="flex items-center mb-4">
                   <School className="h-5 w-5 text-cyan-300 mr-2" />
-                  <h2 className="text-xl font-semibold text-cyan-100">Institution</h2>
+                  <h2 className="text-xl font-semibold text-cyan-100">
+                    Institution
+                  </h2>
                 </div>
                 <div className="pl-7 mb-6">
-                  <h3 className="text-lg font-medium">Department of Information Technology</h3>
-                  <p className="text-blue-200">National Institute of Technology Karnataka, Surathkal-575025</p>
+                  <h3 className="text-lg font-medium">
+                    Department of Information Technology
+                  </h3>
+                  <p className="text-blue-200">
+                    National Institute of Technology Karnataka, Surathkal-575025
+                  </p>
                 </div>
 
                 <div className="flex items-center mb-4">
                   <Calendar className="h-5 w-5 text-cyan-300 mr-2" />
-                  <h2 className="text-xl font-semibold text-cyan-100">Academic Period</h2>
+                  <h2 className="text-xl font-semibold text-cyan-100">
+                    Academic Period
+                  </h2>
                 </div>
                 <div className="pl-7">
                   <p className="text-blue-200">January - April 2025</p>
@@ -119,7 +134,9 @@ export default function AboutPage() {
               <div className="p-6 border-b border-white/10">
                 <div className="flex items-center">
                   <Users className="h-6 w-6 text-cyan-300 mr-3" />
-                  <h2 className="text-2xl font-bold text-white">Project Team</h2>
+                  <h2 className="text-2xl font-bold text-white">
+                    Project Team
+                  </h2>
                 </div>
               </div>
 
@@ -150,6 +167,28 @@ export default function AboutPage() {
                       </Button>
                     </div>
                   </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Kailash Venkat</h3>
+                    <p className="text-cyan-200 mb-2">Student ID: 221IT056</p>
+                    <div className="flex space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 text-xs bg-white/5 hover:bg-white/10 text-cyan-100"
+                      >
+                        <Mail className="h-3 w-3 mr-1" />
+                        Contact
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 text-xs bg-white/5 hover:bg-white/10 text-cyan-100"
+                      >
+                        <Github className="h-3 w-3 mr-1" />
+                        Github
+                      </Button>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -157,8 +196,30 @@ export default function AboutPage() {
                     KV
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold">Kailash Venkat</h3>
-                    <p className="text-cyan-200 mb-2">Student ID: 221IT056</p>
+                    <h3 className="text-xl font-semibold">Balaji Anirudh</h3>
+                    <p className="text-cyan-200 mb-2">Student ID: 221IT026</p>
+                    <div className="flex space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 text-xs bg-white/5 hover:bg-white/10 text-cyan-100"
+                      >
+                        <Mail className="h-3 w-3 mr-1" />
+                        Contact
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 text-xs bg-white/5 hover:bg-white/10 text-cyan-100"
+                      >
+                        <Github className="h-3 w-3 mr-1" />
+                        Github
+                      </Button>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Dilip Sagar M</h3>
+                    <p className="text-cyan-200 mb-2">Student ID: 221IT024</p>
                     <div className="flex space-x-2">
                       <Button
                         variant="ghost"
@@ -189,15 +250,26 @@ export default function AboutPage() {
                     <p className="text-blue-200">
                       Under the guidance of{" "}
                       <a
-                        href="https://infotech.nitk.ac.in/faculty/jaidhar-c-d"
+                        href="https://infotech.nitk.ac.in/faculty/ram-mohana-reddy-guddeti"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-cyan-300 hover:text-cyan-200 font-medium underline underline-offset-2"
                       >
-                        Prof. Jaidhar C.D
+                        Prof. Ram Mohana Reddy Guddeti
+                      </a>{" "}
+                      and{" "}
+                      <a
+                        href="https://infotech.nitk.ac.in/content/palla-parasuram-yadav"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-300 hover:text-cyan-200 font-medium underline underline-offset-2"
+                      >
+                        Dr. Palla Parasuram Yadav
                       </a>
                     </p>
-                    <p className="text-blue-300 text-sm mt-1">Department of Information Technology, NITK Surathkal</p>
+                    <p className="text-blue-300 text-sm mt-1">
+                      Department of Information Technology, NITK Surathkal
+                    </p>
                   </div>
                 </div>
               </div>
@@ -206,10 +278,17 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-8 text-center">Project Overview</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center">
+            Project Overview
+          </h2>
 
           <div className="grid grid-cols-4 gap-4 mb-8">
-            {["Project Scope", "Technology", "Security Features", "Implementation"].map((title, index) => (
+            {[
+              "Project Scope",
+              "Technology",
+              "Security Features",
+              "Implementation",
+            ].map((title, index) => (
               <button
                 key={index}
                 className={`py-3 px-4 rounded-lg transition-all duration-300 ${
@@ -237,11 +316,15 @@ export default function AboutPage() {
                     <BookOpen className="h-6 w-6 text-blue-300" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Project Scope</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Project Scope
+                    </h3>
                     <p className="text-blue-200">
-                      This project focuses on developing a secure system for encrypting and decrypting medical images
-                      using latent vector transformation. The system is designed to protect sensitive medical data while
-                      maintaining the diagnostic quality of the images.
+                      This project focuses on developing a secure system for
+                      encrypting and decrypting medical images using latent
+                      vector transformation. The system is designed to protect
+                      sensitive medical data while maintaining the diagnostic
+                      quality of the images.
                     </p>
                   </div>
                 </div>
@@ -249,19 +332,27 @@ export default function AboutPage() {
                 <div className="pl-12 mt-4 space-y-2">
                   <div className="flex items-center">
                     <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                    <p className="text-blue-200">Secure transmission of sensitive medical images</p>
+                    <p className="text-blue-200">
+                      Secure transmission of sensitive medical images
+                    </p>
                   </div>
                   <div className="flex items-center">
                     <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                    <p className="text-blue-200">HIPAA-compliant encryption and decryption processes</p>
+                    <p className="text-blue-200">
+                      HIPAA-compliant encryption and decryption processes
+                    </p>
                   </div>
                   <div className="flex items-center">
                     <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                    <p className="text-blue-200">Preservation of image quality for diagnostic purposes</p>
+                    <p className="text-blue-200">
+                      Preservation of image quality for diagnostic purposes
+                    </p>
                   </div>
                   <div className="flex items-center">
                     <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                    <p className="text-blue-200">User-friendly interface for healthcare professionals</p>
+                    <p className="text-blue-200">
+                      User-friendly interface for healthcare professionals
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -279,10 +370,12 @@ export default function AboutPage() {
                     <Cpu className="h-6 w-6 text-cyan-300" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Technology Stack</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Technology Stack
+                    </h3>
                     <p className="text-blue-200">
-                      The project utilizes cutting-edge technologies for image processing, encryption, and user
-                      interface development.
+                      The project utilizes cutting-edge technologies for image
+                      processing, encryption, and user interface development.
                     </p>
                   </div>
                 </div>
@@ -315,11 +408,15 @@ export default function AboutPage() {
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 rounded-full bg-cyan-400 mr-2"></div>
-                        <span className="text-blue-200">TensorFlow/PyTorch</span>
+                        <span className="text-blue-200">
+                          TensorFlow/PyTorch
+                        </span>
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 rounded-full bg-cyan-400 mr-2"></div>
-                        <span className="text-blue-200">Django REST Framework</span>
+                        <span className="text-blue-200">
+                          Django REST Framework
+                        </span>
                       </li>
                     </ul>
                   </div>
@@ -339,10 +436,13 @@ export default function AboutPage() {
                     <Shield className="h-6 w-6 text-teal-300" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Security Features</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Security Features
+                    </h3>
                     <p className="text-blue-200">
-                      The system implements multiple layers of security to ensure the confidentiality and integrity of
-                      medical images.
+                      The system implements multiple layers of security to
+                      ensure the confidentiality and integrity of medical
+                      images.
                     </p>
                   </div>
                 </div>
@@ -354,7 +454,8 @@ export default function AboutPage() {
                       End-to-End Encryption
                     </h4>
                     <p className="text-blue-200 text-sm">
-                      All data is encrypted during transmission and storage using AES-256 encryption.
+                      All data is encrypted during transmission and storage
+                      using AES-256 encryption.
                     </p>
                   </div>
 
@@ -364,7 +465,8 @@ export default function AboutPage() {
                       Secure Key Management
                     </h4>
                     <p className="text-blue-200 text-sm">
-                      Cryptographic keys are securely generated and managed to prevent unauthorized access.
+                      Cryptographic keys are securely generated and managed to
+                      prevent unauthorized access.
                     </p>
                   </div>
 
@@ -374,7 +476,8 @@ export default function AboutPage() {
                       HIPAA Compliance
                     </h4>
                     <p className="text-blue-200 text-sm">
-                      The system adheres to HIPAA regulations for protecting sensitive patient information.
+                      The system adheres to HIPAA regulations for protecting
+                      sensitive patient information.
                     </p>
                   </div>
 
@@ -384,7 +487,8 @@ export default function AboutPage() {
                       Latent Vector Transformation
                     </h4>
                     <p className="text-blue-200 text-sm">
-                      Advanced neural network techniques for secure image transformation and reconstruction.
+                      Advanced neural network techniques for secure image
+                      transformation and reconstruction.
                     </p>
                   </div>
                 </div>
@@ -403,9 +507,12 @@ export default function AboutPage() {
                     <Cpu className="h-6 w-6 text-blue-300" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Implementation Details</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Implementation Details
+                    </h3>
                     <p className="text-blue-200">
-                      The project implements a comprehensive workflow for secure medical image processing.
+                      The project implements a comprehensive workflow for secure
+                      medical image processing.
                     </p>
                   </div>
                 </div>
@@ -418,9 +525,12 @@ export default function AboutPage() {
                       <div className="absolute left-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
                         1
                       </div>
-                      <h4 className="text-lg font-medium text-blue-200">Image Upload</h4>
+                      <h4 className="text-lg font-medium text-blue-200">
+                        Image Upload
+                      </h4>
                       <p className="text-blue-300 mt-1">
-                        Secure upload of medical images with validation and preprocessing.
+                        Secure upload of medical images with validation and
+                        preprocessing.
                       </p>
                     </div>
 
@@ -428,9 +538,12 @@ export default function AboutPage() {
                       <div className="absolute left-0 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center">
                         2
                       </div>
-                      <h4 className="text-lg font-medium text-blue-200">Latent Vector Generation</h4>
+                      <h4 className="text-lg font-medium text-blue-200">
+                        Latent Vector Generation
+                      </h4>
                       <p className="text-blue-300 mt-1">
-                        Conversion of images to latent vectors using neural networks.
+                        Conversion of images to latent vectors using neural
+                        networks.
                       </p>
                     </div>
 
@@ -438,17 +551,24 @@ export default function AboutPage() {
                       <div className="absolute left-0 w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
                         3
                       </div>
-                      <h4 className="text-lg font-medium text-blue-200">Encryption/Decryption</h4>
-                      <p className="text-blue-300 mt-1">Secure encryption and decryption of latent vectors.</p>
+                      <h4 className="text-lg font-medium text-blue-200">
+                        Encryption/Decryption
+                      </h4>
+                      <p className="text-blue-300 mt-1">
+                        Secure encryption and decryption of latent vectors.
+                      </p>
                     </div>
 
                     <div className="relative pl-12">
                       <div className="absolute left-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
                         4
                       </div>
-                      <h4 className="text-lg font-medium text-blue-200">Image Reconstruction</h4>
+                      <h4 className="text-lg font-medium text-blue-200">
+                        Image Reconstruction
+                      </h4>
                       <p className="text-blue-300 mt-1">
-                        Reconstruction of original images from decrypted latent vectors.
+                        Reconstruction of original images from decrypted latent
+                        vectors.
                       </p>
                     </div>
                   </div>
@@ -459,11 +579,12 @@ export default function AboutPage() {
         </div>
 
         <footer className="mt-20 text-center text-blue-300 text-sm">
-          <p>© 2025 - Information Assurance and Security (IT352) Course Project</p>
-          <p className="mt-1">National Institute of Technology Karnataka, Surathkal</p>
+          <p>© 2025 - Foundations of Machine Learning (IT464) Course Project</p>
+          <p className="mt-1">
+            National Institute of Technology Karnataka, Surathkal
+          </p>
         </footer>
       </div>
     </div>
-  )
+  );
 }
-
